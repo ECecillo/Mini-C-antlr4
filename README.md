@@ -1,92 +1,175 @@
-# mif08-2023
+# Avancée / Planning du cours de MIF08 (Compilation)
+_Année 2022-2023_
+
+* Matthieu Moy, Université Lyon 1, LIP https://matthieu-moy.fr/
+
+## Communication et nouvelles du cours
+
+* [NEWS.md](NEWS.md) contient les nouvelles du cours (envoyées par email également).
+<!-- 
+## Organisation du cours à distance
+
+* Tous les enseignements passent à distance pendant le mois de novembre (au moins) -->
+
+* Cette année, nous ~~utiliserons~~ détournerons le système d'issues de GitLab
+  comme forum minimaliste. Vous pouvez poser vos questions en ajoutant une issue
+  sur le dépôt : https://forge.univ-lyon1.fr/matthieu.moy/mif08-2023/-/issues 
+
+## Intervenants
+
+**CM**
+
+Matthieu Moy
+
+**TD**
+- A: Matthieu Moy
+- B: Hugo Thievenaz
+- C: Gregoire Pichon
+
+**TP**
+- A1: Matthieu Moy
+- A2: Nicolas Louvet
+- B1: Hugo Thievenaz
+- B2: Gregoire Pichon
+- C1: Gabriel Radanne
+- C2: Guillaume Bouchard
+
+## Vidéos des CM
+
+Les vidéos réalisées pendant le COVID sont encore disponibles. Elles ne sont pas totalement à jour, mais peuvent vous aider si besoin :
+
+[La playlist Youtube MIF08](https://www.youtube.com/playlist?list=PLtjm-n_Ts-J9HSZ9ahpbsC_kTQMzUZQPx)
+
+Il est tout de même très fortement recommandé de venir en présentiel.
+
+## Infrastructure technique, logiciels à installer
+
+Les TP utilisent la chaîne d'outils RiscV, un peu lourde à installer. Voir [INSTALL.md](INSTALL.md) pour les consignes. À faire avant les TPs si vous voulez travailler sur vos machines personnelles.
+
+Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez travailler sur les ordinateurs de la fac, et en dernier recours nous fournissons aussi des machines virtuelles pré-installées : [VM.md](VM.md).
+
+## Planning
+
+## Jeudi 16/02/2023
+
+- :book: 8h: Cours 1: Introduction, machine cible (RISCV), lexing :
+    - Introduction au cours, à la compilation et à l'architecture cible : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours01_intro_et_archi.pdf)
+    - Lexing (et parsing) : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours02_lexing_parsing.pdf
+) <!-- Lexing nécessaire pour TD1 -->
+    - [Vidéo "teaser"](https://youtu.be/ny7HlqyuM9E)
+    - [vidéo d'introduction au cours](https://www.youtube.com/watch?v=zGifE8MfPWA)
+    - [vidéo sur RISCV](https://youtu.be/ZdElX9e_tAI)
+    - [vidéo lexing](https://www.youtube.com/watch?v=UlUTSsOA9Qc)
+    - Extrait de la documentation RISCV: [riscv_isa.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/riscv_isa.pdf)
+    - :100: QCM sur TOMUSS, à faire avant mardi 21/2/2023, 23:59
+
+- :pencil2: 9h45: TD1 : Architecture RISCV, Lexing, Parsing
+    - [Énoncé du TD1](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/td1.pdf)
+    - Rappel, extrait de la documentation RISCV : [riscv_isa.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/riscv_isa.pdf)
+
+- :hammer: 11h30: TP1 : Python et RiscV
+    - Énoncé : [TP1 python/archi](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp1.pdf)
+    - Fichiers du TP1 : [TP01/](TP01/).
+
+## Jeudi 23/2/2023
+
+- :book: 8h: Cours 2: Lexing, Parsing, interprétation
+    - Parsing : [deuxième partie des transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours02_lexing_parsing.pdf)
+    - [vidéo parsing](https://www.youtube.com/watch?v=y9MrfDzrAmA)
+    - [transparents sémantique et interprète](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours03_interpreters.pdf)
+    - [vidéo sémantique et interprète](https://youtu.be/8PYhBsgRO6g)
+
+- :100: QCM sur TOMUSS, à faire avant TODO, 23:59.
+
+- :pencil2: 9h45: TD, Arbres abstraits, attributions, types
+    - [Énoncé du TD2](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/td2.pdf)
+
+## Jeudi 16/3/2023
+
+- :hammer: 8h-11h15: TP2, ANTLR
+    - Transparents de présentation : [capmif_labs.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_labs.pdf)
+    - Si besoin : des VM pour vous dépanner en cas de problème sur machine perso : [VM.md](VM.md)
+    - Énoncé : [TP2 antlr](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp2.pdf)
+    - Fichiers du TP2 : [TP02/](TP02/).
+    - **Date limite pour le rendu (noté) : TODO, 23h59.**
+
+## Jeudi 23/3/2023
+
+- :book: Cours 3, Typage : 8h-9h30
+    - [transparents typage](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours04_typing.pdf)
+    - [vidéo typage](https://youtu.be/2A-hQy_6YlE)
+- :100: QCM sur TOMUSS, à faire avant TODO, 23:59
+
+- :hammer: TP3, interprète MiniC : 9h45-13h
+    - Énoncé : [TP3 frontend, interprète](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp3.pdf)
+    - Fichiers du TP3 : [TP03/](TP03/) puis [MiniC/](MiniC/).
+    - **Date limite de rendu du TP3 : TODO, 23h59 (vous aurez une séance d'1h30 pour finir le TP le 3/11/2021).**
+
+## Jeudi 13/4/2023
+
+- :book: Cours 4 : 8h-9h30
+    - génération de code 3 adresses + allocation naive, [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours05_3ad_codegen.pdf), [vidéo](https://youtu.be/m2x7leFnCN4)
+    - Représentations intermédiaires, [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours06_irs.pdf), [vidéo 6a](https://youtu.be/dD9bRhLfykM), [vidéo 6b](https://youtu.be/Xico_JTK3XQ).
+
+- :100: QCM sur TOMUSS, à faire avant TODO, 23:59.
+
+- :pencil2: TD 3, génération de code : 9h45-11h15
+    - Sujet : [TD3 génération de code](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/td3.pdf)
+
+- :hammer: TP 4, génération de code : 11h30-13h
+    - Transparents de présentation : [capmif_labs.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-20/capmif_labs.pdf)
+    - Rappel : des VM pour vous dépanner en cas de problème sur machine perso : [VM.md](VM.md)
+    - Énoncé : [TP4 génération de code](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp4.pdf)
+    - Fichiers du TP4 : [MiniC/TP04/](MiniC/TP04/).
+    - **Date limite pour le rendu (noté) : TODO, 23h59.** Si vous rendez après la deadline mais avant le TODO, 23h59, un malus d'un point sur 20 est appliqué, puis un point de malus par jour de retard supplémentaire. Aucun TP ne sera accepté après le TODO, 23h59.
+
+## Jeudi 20/4/2023
+
+- :hammer: TP 4 (suite), 8h-11h15 : cf. ci-dessus pour les supports.
+
+## Jeudi 11/5/2023
+
+- :book: Cours 5, allocation de registres : 8h-9h30
+    - Register allocation + data-flow analyses : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours07_regalloc.pdf), [vidéo première partie](https://youtu.be/9902mMgDIK8), [vidéo deuxième partie](https://youtu.be/LknSDccweFw).
+    - :100: QCM sur TOMUSS, à faire avant TODO, 23:59.
 
 
+- :hammer: TP5, nouvelles fonctionnalités de langage : 15h45-17h15
+    - Énoncé : [TP5 allocation de registres](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp5.pdf)
+    - Fichiers du TP5 : [MiniC/TP05/](MiniC/TP05/).
+     - **Date limite pour le rendu (noté) : TODO, 23h59.**
 
-## Getting started
+## Jeudi 8/6/2023
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- :pencil2: TD4, analyse de vivacité : 9h45-11h15
+    - Énoncé : [TD4 liveness](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/td4.pdf)
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-## Add your files
+- :pencil2: TD5, allocation de registres intelligente : 11h30-13h
+    - Énoncé : [TD5 regalloc](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/td5.pdf)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Jeudi 15/06/2023
 
-```
-cd existing_repo
-git remote add origin https://forge.univ-lyon1.fr/matthieu.moy/mif08-2023.git
-git branch -M main
-git push -uf origin main
-```
+- :100: Examen.
 
-## Integrate with your tools
+## Pondération des notes (indicative pour l'instant sauf l'examen final qui sera forcément 40%)
+  - QCM : non pris en compte dans la moyenne d'UE
+  - TP2 parsing et évaluation d'expression : 7%
+  - TP3 interprète : 13%
+  - TP4 génération de code : 20%
+  - TP5 extension de langage : 20%
+  - Examen final : 40 %
 
-- [ ] [Set up project integrations](https://forge.univ-lyon1.fr/matthieu.moy/mif08-2023/-/settings/integrations)
+La session 2 remplace la note d'examen final.
 
-## Collaborate with your team
+## Annales et consignes pour l'examen
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+* Aide mémoire fourni avec le sujet en 2021 (un document similaire sera fourni cette année): [mif08_sheet20.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-20/mif08_sheet20.pdf)
 
-## Test and Deploy
+* L'examen Session 1 2020-2021 : [exam_mif08_2020.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2020.pdf) et les éléments de corrigé : [exam_mif08_2020_corr.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2020_corr.pdf)
 
-Use the built-in continuous integration in GitLab.
+* L'examen 2019-2020 : [mif08_exam1920.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-20/mif08_exam1920.pdf) et les éléments de corrigés : [mif08_exam1920-corr.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-20/mif08_exam1920-corr.pdf).
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+* L'examen 2018-2019 : [exam_mif08_2018.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-20/exam_mif08_2018.pdf)
 
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+* [Consignes pour l'examen](https://compil-lyon.gitlabpages.inria.fr/mif08-20/exam_mif08_2020-page1.pdf)
