@@ -54,8 +54,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
 
 - :book: 8h: Cours 1: Introduction, machine cible (RISCV), lexing :
     - Introduction au cours, à la compilation et à l'architecture cible : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours01_intro_et_archi.pdf)
-    - Lexing (et parsing) : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours02_lexing_parsing.pdf
-) <!-- Lexing nécessaire pour TD1 -->
+    - Lexing (et parsing) : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours02_lexing_parsing.pdf) <!-- Lexing nécessaire pour TD1 -->
     - [Vidéo "teaser"](https://youtu.be/ny7HlqyuM9E)
     - [vidéo d'introduction au cours](https://www.youtube.com/watch?v=zGifE8MfPWA)
     - [vidéo sur RISCV](https://youtu.be/ZdElX9e_tAI)
@@ -79,7 +78,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
     - [transparents sémantique et interprète](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours03_interpreters.pdf)
     - [vidéo sémantique et interprète](https://youtu.be/8PYhBsgRO6g)
 
-- :100: QCM sur TOMUSS, à faire avant TODO, 23:59.
+- :100: QCM sur TOMUSS, à faire avant vendredi 3 mars 2023, 23:59.
 
 - :pencil2: 9h45: TD, Arbres abstraits, attributions, types
     - [Énoncé du TD2](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/td2.pdf)
@@ -91,19 +90,19 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
     - Si besoin : des VM pour vous dépanner en cas de problème sur machine perso : [VM.md](VM.md)
     - Énoncé : [TP2 antlr](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp2.pdf)
     - Fichiers du TP2 : [TP02/](TP02/).
-    - **Date limite pour le rendu (noté) : TODO, 23h59.**
+    - **Date limite pour le rendu (noté) : mercredi 22 mars 2023, 23h59. (deadline stricte)**
 
 ## Jeudi 23/3/2023
 
 - :book: Cours 3, Typage : 8h-9h30
     - [transparents typage](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours04_typing.pdf)
     - [vidéo typage](https://youtu.be/2A-hQy_6YlE)
-- :100: QCM sur TOMUSS, à faire avant TODO, 23:59
+- :100: QCM sur TOMUSS, à faire avant vendredi 31 mars 2023, 23:59.
 
 - :hammer: TP3, interprète MiniC : 9h45-13h
     - Énoncé : [TP3 frontend, interprète](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp3.pdf)
     - Fichiers du TP3 : [TP03/](TP03/) puis [MiniC/](MiniC/).
-    - **Date limite de rendu du TP3 : TODO, 23h59 (vous aurez une séance d'1h30 pour finir le TP le 3/11/2021).**
+    - **Date limite de rendu du TP3 : dimanche 16 avril 2023, 23h59 (deadline stricte). Il y a une séance TP3 le jeudi 13 avril 2023 mais on enchaîne sur le TP4 donc il est vivement recommandé d'avoir presque terminé le TP3 pour le jeudi 13/4/2023.**
 
 ## Jeudi 13/4/2023
 
@@ -111,7 +110,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
     - génération de code 3 adresses + allocation naive, [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours05_3ad_codegen.pdf), [vidéo](https://youtu.be/m2x7leFnCN4)
     - Représentations intermédiaires, [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours06_irs.pdf), [vidéo 6a](https://youtu.be/dD9bRhLfykM), [vidéo 6b](https://youtu.be/Xico_JTK3XQ).
 
-- :100: QCM sur TOMUSS, à faire avant TODO, 23:59.
+- :100: QCM sur TOMUSS, à faire avant mardi 18 avril 2023, 23:59.
 
 - :pencil2: TD 3, génération de code : 9h45-11h15
     - Sujet : [TD3 génération de code](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/td3.pdf)
@@ -121,7 +120,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
     - Rappel : des VM pour vous dépanner en cas de problème sur machine perso : [VM.md](VM.md)
     - Énoncé : [TP4 génération de code](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp4.pdf)
     - Fichiers du TP4 : [MiniC/TP04/](MiniC/TP04/).
-    - **Date limite pour le rendu (noté) : TODO, 23h59.** Si vous rendez après la deadline mais avant le TODO, 23h59, un malus d'un point sur 20 est appliqué, puis un point de malus par jour de retard supplémentaire. Aucun TP ne sera accepté après le TODO, 23h59.
+    - **Date limite pour le rendu (noté) : vendredi 5 mai 2023, 23h59 (malus 2 points par jour de retard, aucun rendu accepté après le dimanche soir).**
 
 ## Jeudi 20/4/2023
 
@@ -131,13 +130,13 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
 
 - :book: Cours 5, allocation de registres : 8h-9h30
     - Register allocation + data-flow analyses : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours07_regalloc.pdf), [vidéo première partie](https://youtu.be/9902mMgDIK8), [vidéo deuxième partie](https://youtu.be/LknSDccweFw).
-    - :100: QCM sur TOMUSS, à faire avant TODO, 23:59.
+    - :100: QCM sur TOMUSS, à faire avant vendredi 19 mai 2023, 23:59.
 
 
 - :hammer: TP5, nouvelles fonctionnalités de langage : 15h45-17h15
     - Énoncé : [TP5 allocation de registres](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp5.pdf)
     - Fichiers du TP5 : [MiniC/TP05/](MiniC/TP05/).
-     - **Date limite pour le rendu (noté) : TODO, 23h59.**
+     - **Date limite pour le rendu (noté) : vendredi 2 juin 2023, 23h59 (malus 2 points par jour de retard, aucun rendu accepté après le dimanche soir).**
 
 ## Jeudi 8/6/2023
 
@@ -164,12 +163,12 @@ La session 2 remplace la note d'examen final.
 
 ## Annales et consignes pour l'examen
 
-* Aide mémoire fourni avec le sujet en 2021 (un document similaire sera fourni cette année): [mif08_sheet20.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-20/mif08_sheet20.pdf)
+* Aide mémoire fourni avec le sujet en 2021 (un document similaire sera fourni cette année): [mif08_companion.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/mif08_companion.pdf)
+
+* L'examen session 1 2021-2022 : [exam_mif08_2022.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2022.pdf) et éléments de corrigé : [exam_mif08_2022_corr.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2022_corr.pdf)
 
 * L'examen Session 1 2020-2021 : [exam_mif08_2020.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2020.pdf) et les éléments de corrigé : [exam_mif08_2020_corr.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2020_corr.pdf)
 
-* L'examen 2019-2020 : [mif08_exam1920.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-20/mif08_exam1920.pdf) et les éléments de corrigés : [mif08_exam1920-corr.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-20/mif08_exam1920-corr.pdf).
-
-* L'examen 2018-2019 : [exam_mif08_2018.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-20/exam_mif08_2018.pdf)
+* L'examen 2019-2020 : [mif08_exam1920.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/mif08_exam1920.pdf) et les éléments de corrigés : [mif08_exam1920-corr.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/mif08_exam1920-corr.pdf).
 
 * [Consignes pour l'examen](https://compil-lyon.gitlabpages.inria.fr/mif08-20/exam_mif08_2020-page1.pdf)
