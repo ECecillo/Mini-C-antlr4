@@ -22,9 +22,9 @@ _Année 2022-2023_
 Matthieu Moy
 
 **TD**
-- A: Matthieu Moy
-- B: Hugo Thievenaz
-- C: Gregoire Pichon
+- A: Matthieu Moy (34 étudiants)
+- B: Hugo Thievenaz (31 étudiants)
+- C: Gregoire Pichon (31 étudiants)
 
 **TP**
 - A1: Matthieu Moy
