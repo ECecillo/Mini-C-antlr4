@@ -10,7 +10,7 @@ source /home/tpetu/Enseignants/matthieu.moy/mif08/setup.sh
 
 ## On virtual machines
 
-Nothing to do, everything is installed.
+Nothing to do, everything is installed. See [VM.md](VM.md) for details.
 
 # Simplest way: binary installation
 
