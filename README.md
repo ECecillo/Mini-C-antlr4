@@ -120,6 +120,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
     - Rappel : des VM pour vous dépanner en cas de problème sur machine perso : [VM.md](VM.md)
     - Énoncé : [TP4 génération de code](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp4.pdf)
     - Fichiers du TP4 : [MiniC/TP04/](MiniC/TP04/).
+    - [Documentation de la bibliothèque fournie](http://matthieu.moy.pages.univ-lyon1.fr/mif08-2023/)
     - **Date limite pour le rendu (noté) : vendredi 5 mai 2023, 23h59 (malus 2 points par jour de retard, aucun rendu accepté après le dimanche soir).**
 
 ## Jeudi 20/4/2023

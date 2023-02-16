@@ -1,3 +1,17 @@
+# On Nautibus machines (UCBL)
+
+## On desktop machines
+
+Everything is installed for you, but not automatically added to your PATH. Run :
+
+```
+source /home/tpetu/Enseignants/matthieu.moy/mif08/setup.sh
+```
+
+## On virtual machines
+
+Nothing to do, everything is installed.
+
 # Simplest way: binary installation
 
 A pre-compiled archive is available here:
