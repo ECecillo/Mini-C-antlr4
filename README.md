@@ -1,3 +1,4 @@
+<!-- LTeX: language=fr -->
 # Avancée / Planning du cours de MIF08 (Compilation)
 _Année 2022-2023_
 
@@ -13,7 +14,9 @@ _Année 2022-2023_
 
 * Cette année, nous ~~utiliserons~~ détournerons le système d'issues de GitLab
   comme forum minimaliste. Vous pouvez poser vos questions en ajoutant une issue
-  sur le dépôt : https://forge.univ-lyon1.fr/matthieu.moy/mif08-2023/-/issues 
+  sur le dépôt : https://forge.univ-lyon1.fr/matthieu.moy/mif08-2023/-/issues .
+  Activez les notifications sur le projet GitLab pour avoir un mail à chaque
+  nouveau post.
 
 ## Intervenants
 
@@ -22,9 +25,9 @@ _Année 2022-2023_
 Matthieu Moy
 
 **TD**
-- A: Matthieu Moy (34 étudiants)
-- B: Hugo Thievenaz (31 étudiants)
-- C: Gregoire Pichon (31 étudiants)
+- A: Matthieu Moy (35 étudiants)
+- B: Hugo Thievenaz (34 étudiants)
+- C: Gregoire Pichon (34 étudiants)
 
 **TP**
 - A1: Matthieu Moy
@@ -54,7 +57,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
 
 - :book: 8h: Cours 1: Introduction, machine cible (RISCV), lexing :
     - Introduction au cours, à la compilation et à l'architecture cible : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours01_intro_et_archi.pdf)
-    - Lexing (et parsing) : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours02_lexing_parsing.pdf) <!-- Lexing nécessaire pour TD1 -->
+    - Lexing (et parsing) : [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours02_lexing_parsing.pdf) <!-- Lexing nécessaire pour TD1, parsing si possible -->
     - [Vidéo "teaser"](https://youtu.be/ny7HlqyuM9E)
     - [vidéo d'introduction au cours](https://www.youtube.com/watch?v=zGifE8MfPWA)
     - [vidéo sur RISCV](https://youtu.be/ZdElX9e_tAI)
@@ -72,7 +75,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
 
 ## Jeudi 23/2/2023
 
-- :book: 8h: Cours 2: Lexing, Parsing, interprétation
+- :book: 8h: Cours 2: Parsing, interprétation
     - Parsing : [deuxième partie des transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours02_lexing_parsing.pdf)
     - [vidéo parsing](https://www.youtube.com/watch?v=y9MrfDzrAmA)
     - [transparents sémantique et interprète](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours03_interpreters.pdf)
