@@ -7,10 +7,6 @@ _Année 2022-2023_
 ## Communication et nouvelles du cours
 
 * [NEWS.md](NEWS.md) contient les nouvelles du cours (envoyées par email également).
-<!-- 
-## Organisation du cours à distance
-
-* Tous les enseignements passent à distance pendant le mois de novembre (au moins) -->
 
 * Cette année, nous ~~utiliserons~~ détournerons le système d'issues de GitLab
   comme forum minimaliste. Vous pouvez poser vos questions en ajoutant une issue
@@ -88,7 +84,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
 
 ## Jeudi 16/3/2023
 
-- :hammer: 8h-11h15: TP2, ANTLR
+- :hammer: 8h-11h15 (9h45-13h pour le groupe C): TP2, ANTLR
     - Transparents de présentation : [capmif_labs.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_labs.pdf)
     - Si besoin : des VM pour vous dépanner en cas de problème sur machine perso : [VM.md](VM.md)
     - Énoncé : [TP2 antlr](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp2.pdf)
