@@ -6,19 +6,19 @@ grammar Arit;
 prog: statement+ EOF
     ;
 
-statement: expr SCOL    {print($expr.text+" = "+str($expr.val))} // print the value              
+statement: expr SCOL    {print($expr.text+" = "+str($expr.val))} // print the value
          ;
 
 expr returns [int val]
     // MULT is * (matched before PLUS if possible)
     // TODO: there's an obvious bug in the line below
-    : e1=expr MULT  e2=expr {$val = 42}
+    : e1=expr MULT  e2=expr {$val = $e1.val * $e2.val}
     | e1=expr PLUS  e2=expr {$val = $e1.val + $e2.val} // PLUS is +
     | a=atom {$val = $a.val} // just copy the value
     ;
 
 atom returns [int val]
-    : INT               {$val = int($INT.text)} // get the value from the lexer        
+    : INT               {$val = int($INT.text)} // get the value from the lexer
     | '(' expr ')'      {$val=$expr.val} // just copy the value
     ;
 
