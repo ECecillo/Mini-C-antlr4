@@ -1,4 +1,5 @@
 # LAB2, arithmetic expressions interpreter
+
 MIF08, 2020-2021, Laure Gonnord & Matthieu Moy
 
 # Content
@@ -27,7 +28,6 @@ Restriction : we did not implement minus nor unary minus.
 
 Given the following grammar of non-empty lists of arithmetic expressions
 
-
 $$ S → Z+ $$
 $$ Z → E; $$
 $$ E → E +E $$
@@ -36,8 +36,13 @@ $$ E → F $$
 $$ F → i nt $$
 $$ F → (E) $$
 
+To be able to handle binary and unary minus we need to set the a new rule in the grammar :
 
+$$ E → E - E $$
 
+But we also need to handle the fact that E can be negative so we will add the following :
+
+$$ E → -F $$
 
 # Known bugs
 
