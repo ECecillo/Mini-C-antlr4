@@ -40,10 +40,12 @@ $$ F → (E) $$
 
 We want to handle in our grammar, binary and unary minus we need to cover the following cases:
 
+$$ -1 = -1 $$
 $$ 1 - 1 = 0 $$
 $$ -1-1 = -2 $$
 $$ -1 + 1 = 0 $$
 $$ -1 + (-1) = -2 $$
+$$ --1 = 1 $$
 
 The minus operation can be easily define with the following rule :
 
@@ -55,7 +57,16 @@ $$ E → -F $$
 
 Which can be repeated n times.
 
+Now we also need to define a rule that handles $$ -1-1 $$ and so we added the following :
+
 $$ E → - E - E $$
+
+Finally to handle recursive `-` symbol and the fact that we could have `-+` we can define the following:
+
+$$ F → -F $$
+$$ F → +F $$
+
+We coded all of the above into our ANTLR grammar and all of the test seems to be passing.
 
 # Known bugs
 
