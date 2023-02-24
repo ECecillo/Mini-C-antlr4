@@ -1,6 +1,6 @@
 # LAB2, arithmetic expressions interpreter
 
-MIF08, 2020-2021, Laure Gonnord & Matthieu Moy
+MIF08, 2022-2023, Laure Gonnord & Matthieu Moy
 
 # Content
 
@@ -26,7 +26,9 @@ Restriction : we did not implement minus nor unary minus.
 
 # Design choices
 
-Given the following grammar of non-empty lists of arithmetic expressions
+## Binary and Unary minus
+
+Given the following grammar of non-empty lists of arithmetic expressions:
 
 $$ S → Z+ $$
 $$ Z → E; $$
@@ -36,13 +38,24 @@ $$ E → F $$
 $$ F → i nt $$
 $$ F → (E) $$
 
-To be able to handle binary and unary minus we need to set the a new rule in the grammar :
+We want to handle in our grammar, binary and unary minus we need to cover the following cases:
+
+$$ 1 - 1 = 0 $$
+$$ -1-1 = -2 $$
+$$ -1 + 1 = 0 $$
+$$ -1 + (-1) = -2 $$
+
+The minus operation can be easily define with the following rule :
 
 $$ E → E - E $$
 
-But we also need to handle the fact that E can be negative so we will add the following :
+However, this won't cover all of the above cases, so we can agree that the following rules should cover the last remaining cases:
 
 $$ E → -F $$
+
+Which can be repeated n times.
+
+$$ E → - E - E $$
 
 # Known bugs
 
