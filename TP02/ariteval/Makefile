@@ -18,7 +18,7 @@ run: $(MAINFILE).py main-deps
 TESTFILE=tests/foo01.txt
 
 test: test_ariteval.py main-deps
-	python3 -m pytest -v $< 
+	python3 -m pytest -v $<
 
 clean:
 	rm -rf *~ $(PACKAGE)*.py $(PACKAGE)*.pyc *.tokens  __pycache* .cache *.interp .antlr/
