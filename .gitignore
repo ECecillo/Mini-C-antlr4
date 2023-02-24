@@ -6,4 +6,5 @@
 **/*Lexer.py
 **/*Listener.py
 **/.antlr
-__pycache__
+**/__pycache__
+**/.pytest_cache
