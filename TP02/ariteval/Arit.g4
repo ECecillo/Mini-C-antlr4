@@ -12,17 +12,16 @@ statement: expr SCOL    {print($expr.text+" = "+str($expr.val))} // print the va
 expr returns [int val]
     // MULT is * (matched before PLUS if possible)
     : e1=expr MULT  e2=expr {$val = $e1.val * $e2.val}
-    | e1=expr PLUS  e2=expr {$val = $e1.val + $e2.val} // PLUS is +
-    | e1 = expr MINUS e2 = expr {$val = $e1.val - $e2.val} // PLUS is +
-    | a= atom {$val = $a.val} // just copy the value
+    | e1 = expr PLUS  e2=expr {$val = $e1.val + $e2.val} // PLUS is +
+    | e1=expr MINUS e2 = expr {$val = $e1.val - $e2.val} // Minus operation E → E - E
+    | MINUS e1 = expr MINUS e2 = expr {$val = - $e1.val - $e2.val}
+    | a= atom {$val = $a.val} | (MINUS a=atom {$val = -$a.val})*
     ;
 
 atom returns [int val]
     : INT               {$val = int($INT.text)} // get the value from the lexer
     | '(' expr ')'      {$val=$expr.val} // just copy the value
-    | '-' expr {$val=-$expr.val} // just copy the value
     ;
-
 
 SCOL :      ';';
 PLUS :      '+';
