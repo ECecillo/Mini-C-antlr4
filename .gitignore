@@ -1,3 +1,9 @@
-*.interp
-*.tokens
+**/*.interp
+**/*.tokens
+**/*.java
+**/*.pyc
+**/*Parser.py
+**/*Lexer.py
+**/*Listener.py
+**/.antlr
 __pycache__
