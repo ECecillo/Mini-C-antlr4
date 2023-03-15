@@ -11,18 +11,17 @@ statement: expr SCOL    {print($expr.text+" = "+str($expr.val))} // print the va
 
 expr returns [int val]
     // MULT is * (matched before PLUS if possible)
-    : e1=expr MULT  e2=expr {$val = $e1.val * $e2.val}
-    | e1 = expr PLUS  e2=expr {$val = $e1.val + $e2.val} // PLUS is +
-    | e1=expr MINUS e2 = expr {$val = $e1.val - $e2.val} // Minus operation E → E - E
-    | a= atom {$val = $a.val} | (MINUS+ a=atom {$val = -$a.val})*
-    | MINUS e1 = expr MINUS e2 = expr {$val = - $e1.val - $e2.val}
+    : e1 = expr MULT  e2 = expr {$val = $e1.val * $e2.val}
+    | e1 = expr DIV   e2 = expr {$val = $e1.val / $e2.val}
+    | e1 = expr MINUS e2 = expr {$val = $e1.val - $e2.val} // Minus operation E → E - E
+    | e1 = expr PLUS  e2 = expr {$val = $e1.val + $e2.val} // PLUS is +
+    | a =  atom                 {$val = $a.val}
     ;
 
 atom returns [int val]
     : INT               {$val = int($INT.text)} // get the value from the lexer
-    | '(' expr ')'      {$val=$expr.val} // just copy the value
+    | '(' expr ')'      {$val=  $expr.val} // just copy the value
     | MINUS atom       {$val = -$atom.val} // match minus sign and recursively check atom for '----'.
-    | PLUS atom        {$val = $atom.val}
     ;
 
 SCOL :      ';';
