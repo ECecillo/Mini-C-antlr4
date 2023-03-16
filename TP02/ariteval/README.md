@@ -71,14 +71,15 @@ We coded all of the above into our ANTLR grammar and all of the test seems to be
 
 Which can be repeated n times.
 
-Now we also need to define a rule that handles $$ -1-1 $$ and so we added the following :
+However, there is one last critical test that won't pass if we don't handle the priority between operators
 
-$$ E → - E - E $$
+$$1--1+3$$
 
-Finally to handle recursive `-` symbol and the fact that we could have `-+` we can define the following:
+If we evaluate this expression with our actual grammar it will return $1$.
 
-$$ F → -F $$
-$$ F → +F $$
+If we want to have the expected result ($5$) ANTLR need to evaluate $1--1$ which is equivalent to $1-(-1)$, right now it would cut the expression at $-1+3$ first because the $+$ is evaluated first.
+
+In an arithmetic expression we evaluate $-$ first and after $+$ so if we chance the order it should work properly.
 
 We coded all of the above into our ANTLR grammar and all of the test seems to be passing.
 
