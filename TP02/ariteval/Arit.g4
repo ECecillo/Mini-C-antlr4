@@ -19,9 +19,9 @@ expr returns [int val]
     ;
 
 atom returns [int val]
-    : INT               {$val = int($INT.text)} // get the value from the lexer
-    | '(' expr ')'      {$val=  $expr.val} // just copy the value
-    | MINUS atom       {$val = -$atom.val} // match minus sign and recursively check atom for '----'.
+    : INT               {$val =  int($INT.text)} // get the value from the lexer
+    | '(' expr ')'      {$val =  $expr.val} // just copy the value
+    | MINUS atom        {$val = -$atom.val} // match minus sign and recursively check atom for '----'.
     ;
 
 SCOL :      ';';
