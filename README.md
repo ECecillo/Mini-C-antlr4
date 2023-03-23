@@ -79,7 +79,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
 
 - :100: QCM sur TOMUSS, à faire avant vendredi 3 mars 2023, 23:59.
 
-- :pencil2: 9h45: TD, Arbres abstraits, attributions, types
+- :pencil2: 9h45: TD, Arbres abstraits, attributions
     - [Énoncé du TD2](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/td2.pdf)
 
 ## Jeudi 16/3/2023
@@ -101,7 +101,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
 - :hammer: TP3, interprète MiniC : 9h45-13h
     - Énoncé : [TP3 frontend, interprète](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp3.pdf)
     - Fichiers du TP3 : [TP03/](TP03/) puis [MiniC/](MiniC/).
-    - **Date limite de rendu du TP3 : dimanche 16 avril 2023, 23h59 (deadline stricte). Il y a une séance TP3 le jeudi 13 avril 2023 mais on enchaîne sur le TP4 donc il est vivement recommandé d'avoir presque terminé le TP3 pour le jeudi 13/4/2023.**
+    - **Date limite de rendu du TP3 : dimanche 16 avril 2023, 23h59 (deadline stricte). Il y a une séance TP3 le jeudi 13 avril 2023, mais on enchaîne sur le TP4 donc il est vivement recommandé d'avoir presque terminé le TP3 pour le jeudi 13/4/2023.**
 
 ## Jeudi 13/4/2023
 
