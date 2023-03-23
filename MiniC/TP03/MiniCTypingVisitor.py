@@ -148,6 +148,7 @@ class MiniCTypingVisitor(MiniCVisitor):
         return ltype
 
     def visitMultiplicativeExpr(self, ctx):
+        assert ctx.myop is not None
         ltype = self.visit(ctx.expr(0))
         rtype = self.visit(ctx.expr(1))
 
@@ -156,6 +157,9 @@ class MiniCTypingVisitor(MiniCVisitor):
 
         if ltype not in (BaseType.Integer, BaseType.Float):
             self._raise(ctx, 'multiplicative operands', ltype, rtype)
+
+        if ctx.myop.type == MiniCParser.MOD and ltype != BaseType.Integer:
+            self._raise(ctx, 'non-integer modulo', ltype, rtype)
 
         return ltype
 
