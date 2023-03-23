@@ -44,25 +44,25 @@ def valid_modes():
     modes = ['parse', 'typecheck', 'eval']
 
     try:
-        import TP04.MiniCCodeGen3AVisitor  # pyright: ignore[reportMissingImports], noqa: F401, type: ignore
+        import TP04.MiniCCodeGen3AVisitor  # pyright: ignore # noqa: F401, type: ignore
         modes.append('codegen-linear')
     except ImportError:
         return modes
 
     try:
-        import Lib.CFG  # pyright: ignore[reportMissingImports], noqa: F401, type: ignore
+        import Lib.CFG  # pyright: ignore # noqa: F401, type: ignore
         modes.append('codegen-cfg')
     except ImportError:
         return modes
 
     try:
-        import TP05.EnterSSA  # pyright: ignore[reportMissingImports], noqa: F401, type: ignore
+        import TP05.EnterSSA  # pyright: ignore # noqa: F401, type: ignore
         modes.append('codegen-ssa')
     except ImportError:
         return modes
 
     try:
-        import TPoptim.OptimSSA  # pyright: ignore[reportMissingImports], noqa: F401, type: ignore
+        import TPoptim.OptimSSA  # pyright: ignore # noqa: F401, type: ignore
         modes.append('codegen-optim')
     except ImportError:
         pass
