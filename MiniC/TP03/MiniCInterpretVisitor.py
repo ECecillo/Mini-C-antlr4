@@ -19,11 +19,28 @@ class MiniCInterpretVisitor(MiniCVisitor):
 
     def visitVarDecl(self, ctx) -> None:
         # Initialise all variables in self._memory
-        type_str = ctx.typee().getText()
-        raise NotImplementedError()
+        type_str: str = ctx.typee().getText()
+        vars_l: List[str] = self.visit(ctx.id_l())
+        for name in vars_l:
+            if name in self._memory:
+                raise MiniCRuntimeError(
+                    "Variable {0} already declared.".format(name)
+                )
+            if type_str == 'int':
+                self._memory[name] = 0
+            elif type_str == 'float':
+                self._memory[name] = 0.0
+            elif type_str == 'bool':
+                self._memory[name] = False
+            elif type_str == 'string':
+                self._memory[name] = ""
+            else:
+                raise MiniCInternalError("Unknown type {0}.".format(type_str))
 
     def visitIdList(self, ctx) -> List[str]:
-        raise NotImplementedError()
+        list_variables = self.visit(ctx.id_l())
+        list_variables.append(ctx.ID().getText())
+        return list_variables
 
     def visitIdListBase(self, ctx) -> List[str]:
         return [ctx.ID().getText()]
@@ -43,7 +60,8 @@ class MiniCInterpretVisitor(MiniCVisitor):
         return ctx.getText() == "true"
 
     def visitIdAtom(self, ctx) -> MINIC_VALUE:
-        raise NotImplementedError()
+        variable_name: str = ctx.getText()
+        return self._memory[variable_name]
 
     def visitStringAtom(self, ctx) -> str:
         return ctx.getText()[1:-1]  # Remove the ""
@@ -177,7 +195,8 @@ class MiniCInterpretVisitor(MiniCVisitor):
             self.visit(ctx.vardecl_l())
             self.visit(ctx.block())
         else:
-            raise MiniCRuntimeError("Functions are not supported in evaluation mode")
+            raise MiniCRuntimeError(
+                "Functions are not supported in evaluation mode")
 
     def visitFuncCall(self, ctx) -> None:  # pragma: no cover
         raise MiniCRuntimeError("Functions are not supported in evaluation mode")
