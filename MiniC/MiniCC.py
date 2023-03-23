@@ -16,7 +16,7 @@ from TP03.MiniCInterpretVisitor import MiniCInterpretVisitor
 from Lib.Errors import (MiniCUnsupportedError, MiniCInternalError,
                         MiniCRuntimeError, AllocationError)
 
-from antlr4 import FileStream, CommonTokenStream
+import antlr4
 from antlr4.error.ErrorListener import ErrorListener
 
 from argparse import ArgumentParser
@@ -98,11 +98,11 @@ def main(inputname, reg_alloc, mode,
             output_name = basename + ".s"
             print("Code will be generated in file " + output_name)
 
-    input_s = FileStream(inputname, encoding='utf-8')
+    input_s = antlr4.FileStream(inputname, encoding='utf-8')
     lexer = MiniCLexer(input_s)
     counter = CountErrorListener()
     lexer._listeners.append(counter)
-    stream = CommonTokenStream(lexer)
+    stream = antlr4.CommonTokenStream(lexer)
     parser = MiniCParser(stream)
     parser._listeners.append(counter)
     tree = parser.prog()

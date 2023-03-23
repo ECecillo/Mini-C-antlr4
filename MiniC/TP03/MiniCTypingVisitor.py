@@ -1,5 +1,5 @@
 # Visitor to *typecheck* MiniC files
-from typing import List
+from typing import List, NoReturn
 from MiniCVisitor import MiniCVisitor
 from MiniCParser import MiniCParser
 from Lib.Errors import MiniCInternalError, MiniCTypeError
@@ -33,7 +33,7 @@ class MiniCTypingVisitor(MiniCVisitor):
                     ctx.start.line, ctx.start.column, for_what,
                     ' and '.join(t.name.lower() for t in types)))
 
-    def _raiseNonType(self, ctx, message):
+    def _raiseNonType(self, ctx, message) -> NoReturn:
         raise MiniCTypeError(
             'In function {}: Line {} col {}: {}'.format(
                 self._current_function,
