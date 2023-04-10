@@ -37,8 +37,9 @@ doc: antlr
 	sphinx-apidoc -e -f -o doc/api . TP* replace_* *Wrapper* MiniC* conf* test*
 	make -C doc html
 
-test: test-interpret
 
+
+test: test-interpret test-lab4
 
 test-pyright: antlr
 	pyright .
@@ -53,19 +54,27 @@ test-interpret: test-pyright test_interpreter.py main-deps
 	python3 -m pytest $(PYTEST_BASE_OPTS) $(PYTEST_OPTS) test_interpreter.py
 
 
+ifndef MODE
+# The export must be on the same line as the command (note the ';'), because
+# make starts a new shell for each line.
+LINEAR=export MINICC_OPTS="${MINICC_OPTS} --mode codegen-linear"; 
+else
+LINEAR=
+endif
+
 # Test for naive allocator (also runs test_expect to check // EXPECTED directives):
 test-naive: test-pyright antlr
-ifndef MODE
-	export MINICC_OPTS="${MINICC_OPTS} --mode codegen-linear"
-endif
-	python3 -m pytest $(PYTEST_BASE_OPTS) $(PYTEST_OPTS) ./test_codegen.py -k 'naive or expect'
+	$(LINEAR) python3 -m pytest $(PYTEST_BASE_OPTS) $(PYTEST_OPTS) ./test_codegen.py -k 'naive or expect'
+
+test-mem: test-pyright antlr
+	$(LINEAR) python3 -m pytest $(PYTEST_BASE_OPTS) $(PYTEST_OPTS) ./test_codegen.py -k 'test_alloc_mem'
+
+test-hybrid: test-pyright antlr
+	$(LINEAR) python3 -m pytest $(PYTEST_BASE_OPTS) $(PYTEST_OPTS) ./test_codegen.py -k 'hybrid'
 
 # Test for all but the smart allocator, i.e. everything that lab4 should pass:
 test-lab4: test-pyright antlr
-ifndef MODE
-	export MINICC_OPTS="${MINICC_OPTS} --mode codegen-linear"
-endif
-	python3 -m pytest $(PYTEST_BASE_OPTS) $(PYTEST_OPTS) ./test_codegen.py -k 'not smart'
+	$(LINEAR) python3 -m pytest $(PYTEST_BASE_OPTS) $(PYTEST_OPTS) ./test_codegen.py -k 'not smart'
 
 # Test just the smart allocator (quicker than tests)
 test-smart: test-pyright antlr
