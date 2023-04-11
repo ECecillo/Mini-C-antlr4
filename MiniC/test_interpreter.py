@@ -46,14 +46,14 @@ class TestInterpret(TestExpectPragmas, TestCompiler):
         return res
 
     # Not in test_expect_pragma to get assertion rewritting
-    def assert_equal(self, actual, expected):
+    def assert_equal(self, actual, expected, compiler):
         if expected.output is not None and actual.output is not None:
             assert actual.output == expected.output, \
-                "Output of the program is incorrect."
+                f"Output of the program is incorrect (using {compiler})."
         assert actual.exitcode == expected.exitcode, \
-            "Exit code of the compiler is incorrect"
+            f"Exit code of the compiler ({compiler}) is incorrect"
         assert actual.execcode == expected.execcode, \
-            "Exit code of the execution is incorrect"
+            f"Exit code of the execution is incorrect (using {compiler})"
 
     @pytest.mark.parametrize('filename', ALL_FILES)
     def test_expect(self, filename):
@@ -61,14 +61,15 @@ class TestInterpret(TestExpectPragmas, TestCompiler):
         program with GCC."""
         expect = self.get_expect(filename)
         if expect.skip_test_expected:
-            pytest.skip("Skipping test because it contains SKIP TEST EXPECTED")
+            pytest.skip("Skipping test_expect with GCC because "
+                        "the test contains SKIP TEST EXPECTED")
         if expect.exitcode != 0:
             # GCC is more permissive than us, so trying to compile an
             # incorrect program would bring us no information (it may
             # compile, or fail with a different message...)
             pytest.skip("Not testing the expected value for tests expecting exitcode!=0")
         gcc_result = self.run_with_gcc(filename, expect)
-        self.assert_equal(gcc_result, expect)
+        self.assert_equal(gcc_result, expect, "gcc")
 
     @pytest.mark.parametrize('filename', ALL_FILES)
     def test_eval(self, filename):
@@ -76,7 +77,7 @@ class TestInterpret(TestExpectPragmas, TestCompiler):
         expect = self.get_expect(filename)
         actual = self.evaluate(filename)
         if expect:
-            self.assert_equal(actual, expect)
+            self.assert_equal(actual, expect, "MiniCC")
 
 
 if __name__ == '__main__':

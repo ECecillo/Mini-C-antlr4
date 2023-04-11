@@ -75,8 +75,6 @@ class TestExpectPragmas(object):
         if not ignore_error_message:
             return False
 
-        # TODO: Deal with undefined behavior here?
-
         if expect.exitcode != actual.exitcode:
             # Not the same exit code => something's wrong anyway
             return False

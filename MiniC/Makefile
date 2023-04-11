@@ -37,9 +37,9 @@ doc: antlr
 	sphinx-apidoc -e -f -o doc/api . TP* replace_* *Wrapper* MiniC* conf* test*
 	make -C doc html
 
+test: test-interpret
 
 
-test: test-interpret test-lab4
 
 test-pyright: antlr
 	pyright .

@@ -90,7 +90,7 @@ class TestCodeGen(TestExpectPragmas, TestCompiler):
     MINICC_OPTS = MINICC_OPTS
 
     # Not in test_expect_pragma to get assertion rewritting
-    def assert_equal(self, actual, expected):
+    def assert_equal(self, actual, expected, compiler):
         if DISABLE_CODEGEN and expected.exitcode in (0, 5):
             # Compiler does not fail => no output expected
             assert actual.output == "", \
@@ -103,12 +103,12 @@ class TestCodeGen(TestExpectPragmas, TestCompiler):
             # typechecking => nothing to check.
             pytest.skip("Test that doesn't typecheck with --disable-typecheck")
         assert actual.exitcode == expected.exitcode, \
-            "Exit code of the compiler is incorrect"
+            f"Exit code of the compiler ({compiler}) is incorrect"
         if expected.output is not None and actual.output is not None:
             assert actual.output == expected.output, \
-                "Output of the program is incorrect."
+                f"Output of the program is incorrect (using {compiler})."
         assert actual.execcode == expected.execcode, \
-            "Exit code of the execution (spike) is incorrect"
+            f"Exit code of the execution is incorrect (after compiling with {compiler})"
 
     @pytest.mark.parametrize('filename', ALL_FILES)
     def test_expect(self, filename):
@@ -116,39 +116,40 @@ class TestCodeGen(TestExpectPragmas, TestCompiler):
         program with GCC."""
         expect = self.get_expect(filename)
         if expect.skip_test_expected:
-            pytest.skip("Skipping test because it contains SKIP TEST EXPECTED")
+            pytest.skip("Skipping test_expect with GCC because "
+                        "the test contains SKIP TEST EXPECTED")
         if expect.exitcode != 0:
             # GCC is more permissive than us, so trying to compile an
             # incorrect program would bring us no information (it may
             # compile, or fail with a different message...)
             pytest.skip("Not testing the expected value for tests expecting exitcode!=0")
         gcc_result = self.run_with_gcc(filename, expect)
-        self.assert_equal(gcc_result, expect)
+        self.assert_equal(gcc_result, expect, "GCC")
 
     @pytest.mark.parametrize('filename', ALL_FILES)
     def test_naive_alloc(self, filename):
         expect = self.get_expect(filename)
         naive = self.compile_and_simulate(filename, expect, 'naive')
-        self.assert_equal(naive, expect)
+        self.assert_equal(naive, expect, "MiniCC with naive alloc")
 
     @pytest.mark.parametrize('filename', ALL_IN_MEM_FILES)
     def test_alloc_mem(self, filename):
         expect = self.get_expect(filename)
         actual = self.compile_and_simulate(filename, expect, 'all-in-mem')
-        self.assert_equal(actual, expect)
+        self.assert_equal(actual, expect, "MiniCC with all-in-mem")
 
     @pytest.mark.parametrize('filename', ALL_IN_MEM_FILES)
     def test_alloc_hybrid(self, filename):
         expect = self.get_expect(filename)
         actual = self.compile_and_simulate(filename, expect, 'hybrid')
-        self.assert_equal(actual, expect)
+        self.assert_equal(actual, expect, "MiniCC with hybride naive alloc")
 
     @pytest.mark.parametrize('filename', ALL_IN_MEM_FILES)
     def test_smart_alloc(self, filename):
         """Generate code with smart allocation."""
         expect = self.get_expect(filename)
         actual = self.compile_and_simulate(filename, expect, 'smart')
-        self.assert_equal(actual, expect)
+        self.assert_equal(actual, expect, "MiniCC with smart alloc")
 
 
 if __name__ == '__main__':
