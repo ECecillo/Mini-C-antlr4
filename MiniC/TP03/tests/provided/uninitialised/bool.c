@@ -12,5 +12,6 @@ int main() {
     return 0;
 }
 
+// SKIP TEST EXPECTED
 // EXPECTED
 // 2

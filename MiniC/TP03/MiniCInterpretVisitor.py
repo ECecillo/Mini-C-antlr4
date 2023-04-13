@@ -179,5 +179,5 @@ class MiniCInterpretVisitor(MiniCVisitor):
         else:
             raise MiniCRuntimeError("Functions are not supported in evaluation mode")
 
-    def visitFuncCall(self, ctx) -> None:
+    def visitFuncCall(self, ctx) -> None:  # pragma: no cover
         raise MiniCRuntimeError("Functions are not supported in evaluation mode")
