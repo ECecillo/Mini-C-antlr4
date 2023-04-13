@@ -24,7 +24,7 @@ class MiniCInterpretVisitor(MiniCVisitor):
         for name in vars_l:
             if name in self._memory:
                 raise MiniCRuntimeError(
-                    "Variable {0} already declared.".format(name)
+                    "Variable {0} has already been declared.".format(name)
                 )
             if type_str == 'int':
                 self._memory[name] = 0
@@ -34,8 +34,6 @@ class MiniCInterpretVisitor(MiniCVisitor):
                 self._memory[name] = False
             elif type_str == 'string':
                 self._memory[name] = ""
-            else:
-                raise MiniCInternalError("Unknown type {0}.".format(type_str))
 
     def visitIdList(self, ctx) -> List[str]:
         list_variables = self.visit(ctx.id_l())
@@ -51,17 +49,17 @@ class MiniCInterpretVisitor(MiniCVisitor):
         return self.visit(ctx.expr())
 
     def visitIntAtom(self, ctx) -> int:
-        return int(ctx.getText())
+        return int(ctx.getText())  # return int(var);
 
     def visitFloatAtom(self, ctx) -> float:
-        return float(ctx.getText())
+        return float(ctx.getText())  # return float(var);
 
     def visitBooleanAtom(self, ctx) -> bool:
-        return ctx.getText() == "true"
+        return ctx.getText() == "true"  # return true rule.
 
     def visitIdAtom(self, ctx) -> MINIC_VALUE:
         variable_name: str = ctx.getText()
-        return self._memory[variable_name]
+        return self._memory[variable_name]  # find value of x and return it.
 
     def visitStringAtom(self, ctx) -> str:
         return ctx.getText()[1:-1]  # Remove the ""
@@ -96,7 +94,7 @@ class MiniCInterpretVisitor(MiniCVisitor):
         lval = self.visit(ctx.expr(0))
         rval = self.visit(ctx.expr(1))
         if ctx.myop.type == MiniCParser.LT:
-            return lval < rval
+            return lval < rval  # equivalent to rule return e1.visit()<e2.visit()
         elif ctx.myop.type == MiniCParser.LTEQ:
             return lval <= rval
         elif ctx.myop.type == MiniCParser.GT:
@@ -130,15 +128,17 @@ class MiniCInterpretVisitor(MiniCVisitor):
         if ctx.myop.type == MiniCParser.MULT:
             return lval * rval
         elif ctx.myop.type == MiniCParser.DIV:
-            if rval == 0:
+            if rval == 0 or rval == 0.0 or rval == 0.00:
                 raise MiniCRuntimeError("Division by 0")
-            if isinstance(lval, int):
+            elif isinstance(lval, int):  # integer division
                 return lval // rval
-            else:
+            else:  # float division
                 return lval / rval
         elif ctx.myop.type == MiniCParser.MOD:
-            # TODO : interpret modulo
-            raise NotImplementedError()
+            if rval == 0 or rval == 0.0 or rval == 0.00:
+                raise MiniCRuntimeError("Division by 0")
+            else:
+                return lval % rval
         else:
             raise MiniCInternalError(
                 f"Unknown multiplicative operator '{ctx.myop}'")
@@ -157,8 +157,7 @@ class MiniCInterpretVisitor(MiniCVisitor):
 
     def visitPrintlnfloatStat(self, ctx) -> None:
         val = self.visit(ctx.expr())
-        if isinstance(val, float):
-            val = f"{val:.2f}"
+        val = f"{val:.2f}"
         print(val)
 
     def visitPrintlnboolStat(self, ctx) -> None:
@@ -170,13 +169,33 @@ class MiniCInterpretVisitor(MiniCVisitor):
         print(val)
 
     def visitAssignStat(self, ctx) -> None:
-        raise NotImplementedError()
+        variable_name = ctx.ID().getText()
+        # recursively visit the expression to get the value.
+        value = self.visit(ctx.expr())
+        self._memory[variable_name] = value
 
     def visitIfStat(self, ctx) -> None:
-        raise NotImplementedError()
+        # We don't need to check IF token is here because ANTLR already recognized it.
+        # evaluate the expression inside parenthesis
+        result_if_eval_expr = self.visit(ctx.expr())
+        if result_if_eval_expr:  # if evaluation of the expression is true
+            # recursively visit the then block.
+            self.visit(ctx.then_block)
+        else:
+            # Continue if else statement here.
+            is_else = ctx.ELSE() is not None
+            if is_else:
+                self.visit(ctx.else_block)
+            # if no else block or if false continue execution and do nothing.
 
     def visitWhileStat(self, ctx) -> None:
-        raise NotImplementedError()
+        result_while_eval_expr = self.visit(ctx.expr())
+        # While this expression is true, we execute the body of the while.
+        while result_while_eval_expr:
+            self.visit(ctx.body)
+            # We reevalutate the expr to see if we need to break the wile loop.
+            result_while_eval_expr = self.visit(ctx.expr())
+        # We continue the execution of the program by doing nothing here.
 
     # TOPLEVEL
     def visitProgRule(self, ctx) -> None:
