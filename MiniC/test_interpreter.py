@@ -11,6 +11,9 @@ if HERE == os.path.realpath('.'):
 TEST_DIR = HERE
 IMPLEM_DIR = HERE
 
+SKIP_EXPECT = False
+if 'SKIP_EXPECT' in os.environ:
+    SKIP_EXPECT = True
 
 DISABLE_TYPECHECK = False  # True to skip typechecking
 
@@ -59,6 +62,8 @@ class TestInterpret(TestExpectPragmas, TestCompiler):
     def test_expect(self, filename):
         """Test the EXPECTED annotations in test files by launching the
         program with GCC."""
+        if SKIP_EXPECT:
+            pytest.skip("Skipping all test_expect because $SKIP_EXPECT is set.")
         expect = self.get_expect(filename)
         if expect.skip_test_expected:
             pytest.skip("Skipping test_expect with GCC because "
