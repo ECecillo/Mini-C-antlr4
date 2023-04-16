@@ -39,6 +39,10 @@ if HERE == os.path.realpath('.'):
     HERE = '.'
 TEST_DIR = HERE
 IMPLEM_DIR = HERE
+SKIP_EXPECT = False
+if 'SKIP_EXPECT' in os.environ:
+    SKIP_EXPECT = True
+
 MINIC_COMPILE = os.path.join(IMPLEM_DIR, 'MiniCC.py')
 
 ALL_FILES = []
