@@ -96,7 +96,7 @@ define CLEAN
 import glob
 import os
 for f in glob.glob("**/tests/**/*.c", recursive=True):
-	for s in ("{}-{}.s".format(f[:-2], test) for test in ("naive", "smart", "gcc", "all-in-mem")):
+	for s in ("{}-{}.s".format(f[:-2], test) for test in ("naive", "smart", "gcc", "all-in-mem", "hybrid")):
 		try:
 			os.remove(s)
 			print("Removed {}".format(s))
