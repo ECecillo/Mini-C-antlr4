@@ -219,8 +219,41 @@ class MiniCCodeGen3AVisitor(MiniCVisitor):
 
     def visitMultiplicativeExpr(self, ctx) -> Operands.Temporary:
         assert ctx.myop is not None
+        lval = self.visit(ctx.expr(0))
+        rval = self.visit(ctx.expr(1))
         div_by_zero_lbl = self._current_function.fdata.get_label_div_by_zero()
-        raise NotImplementedError()  # TODO (Exercise 8)
+        dest_temp = self._current_function.fdata.fresh_tmp()
+        zero_temp = self._current_function.fdata.fresh_tmp()
+        self._current_function.add_instruction(
+            RiscV.li(zero_temp, Operands.Immediate(0))
+        )
+        if ctx.myop.type == MiniCParser.MULT:
+            self._current_function.add_instruction(
+                RiscV.mul(dest_temp, lval, rval))
+            return dest_temp
+
+        elif ctx.myop.type == MiniCParser.DIV:
+            # We check the right value of the expr and if it is 0 we jump to the label.
+            self._current_function.add_instruction(
+                RiscV.conditional_jump(
+                    div_by_zero_lbl, rval, Condition('beq'), zero_temp))
+            self._current_function.add_instruction(
+                RiscV.div(dest_temp, lval, rval))
+            return dest_temp
+        elif ctx.myop.type == MiniCParser.MOD:
+            # We check the right value of the expr and if it is 0 we jump to the label.
+            self._current_function.add_instruction(
+                RiscV.conditional_jump(
+                    div_by_zero_lbl, rval, Condition('beq'), zero_temp))
+            self._current_function.add_instruction(
+                RiscV.div(dest_temp, lval, rval))
+            self._current_function.add_instruction(
+                RiscV.mul(dest_temp, dest_temp, rval))
+            self._current_function.add_instruction(
+                RiscV.sub(dest_temp, lval, dest_temp))
+            return dest_temp
+        self._current_function.add_label(div_by_zero_lbl)
+        raise MiniCInternalError("Division by zero")
 
     def visitNotExpr(self, ctx) -> Operands.Temporary:
         val = self.visit(ctx.expr())
