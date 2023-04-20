@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.module": "php",
+    "and_base.C": "cpp",
+    "printlib.h": "c"
+  }
+}
