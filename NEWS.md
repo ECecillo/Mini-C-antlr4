@@ -3,6 +3,14 @@
 
 Les nouvelles du cours apparaîtront ici au fur et à mesure.
 
+## 5/05/2023 : extension de deadline
+
+À la demande de certains étudiants, j'ai étendu la deadline du TP4 à mardi 9
+mai, 20h. Deadline stricte. Vous pouvez faire plusieurs rendus successifs sur
+TOMUSS, n'hésitez pas à faire un premier rendu tôt avec un TP non-terminé, et à
+re-soumettre au fur et à mesure de votre avancée pour être certain de ne pas
+rater la deadline.
+
 ## 23/03/2023 : Plus de tests fournis, erreurs Pyright
 
 Comme annoncé précédemment, je vous ai ajouté quelque cas de tests pour vous
