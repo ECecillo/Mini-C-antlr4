@@ -106,7 +106,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
 ## Jeudi 13/4/2023
 
 - :book: Cours 4 : 8h-9h30
-    - génération de code 3 adresses + allocation naive, [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours05_3ad_codegen.pdf), [vidéo](https://youtu.be/m2x7leFnCN4)
+    - génération de code 3 adresses + allocation naïve, [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours05_3ad_codegen.pdf), [vidéo](https://youtu.be/m2x7leFnCN4)
     - Représentations intermédiaires, [transparents](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/capmif_cours06_irs.pdf), [vidéo 6a](https://youtu.be/dD9bRhLfykM), [vidéo 6b](https://youtu.be/Xico_JTK3XQ).
 
 - :100: QCM sur TOMUSS, à faire avant mardi 18 avril 2023, 23:59.
@@ -134,8 +134,8 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
 
 
 - :hammer: TP5, nouvelles fonctionnalités de langage : 15h45-17h15
-    - Énoncé : [TP5 allocation de registres](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp5.pdf)
-    - Fichiers du TP5 : [MiniC/TP05/](MiniC/TP05/).
+    - Énoncé : [TP5 (extension de langage)](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp5for.pdf)
+    - Fichiers du TP5 : les mêmes qu'aux TP précédents.
      - **Date limite pour le rendu (noté) : vendredi 2 juin 2023, 23h59 (malus 2 points par jour de retard, aucun rendu accepté après le dimanche soir).**
 
 ## Jeudi 8/6/2023
@@ -163,7 +163,7 @@ La session 2 remplace la note d'examen final.
 
 ## Annales et consignes pour l'examen
 
-* Aide mémoire fourni avec le sujet en 2021 (un document similaire sera fourni cette année): [mif08_companion.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/mif08_companion.pdf)
+* Aide mémoire fourni avec le sujet en 2021 (un document similaire sera fourni cette année) : [mif08_companion.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/mif08_companion.pdf)
 
 * L'examen session 1 2021-2022 : [exam_mif08_2022.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2022.pdf) et éléments de corrigé : [exam_mif08_2022_corr.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2022_corr.pdf)
 
