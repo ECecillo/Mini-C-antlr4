@@ -163,7 +163,7 @@ La session 2 remplace la note d'examen final.
 
 ## Annales et consignes pour l'examen
 
-* Aide mémoire fourni avec le sujet en 2021 (un document similaire sera fourni cette année) : [mif08_companion.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/mif08_companion.pdf)
+* Aide-mémoire fourni avec le sujet en 2021 (un document similaire sera fourni cette année) : [mif08_companion.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/mif08_companion.pdf)
 
 * L'examen session 1 2021-2022 : [exam_mif08_2022.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2022.pdf) et éléments de corrigé : [exam_mif08_2022_corr.pdf](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/exam_mif08_2022_corr.pdf)
 
