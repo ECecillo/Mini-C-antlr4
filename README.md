@@ -133,7 +133,7 @@ Si vous n'arrivez pas à installer les outils sur vos machines, vous pourrez tra
     - :100: QCM sur TOMUSS, à faire avant vendredi 19 mai 2023, 23:59.
 
 
-- :hammer: TP5, nouvelles fonctionnalités de langage : 15h45-17h15
+- :hammer: TP5, nouvelles fonctionnalités de langage : 9h45-13h
     - Énoncé : [TP5 (extension de langage)](https://compil-lyon.gitlabpages.inria.fr/mif08-files-2023/tp5for.pdf)
     - Fichiers du TP5 : les mêmes qu'aux TP précédents.
      - **Date limite pour le rendu (noté) : vendredi 2 juin 2023, 23h59 (malus 2 points par jour de retard, aucun rendu accepté après le dimanche soir).**

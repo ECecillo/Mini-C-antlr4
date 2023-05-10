@@ -10,7 +10,7 @@ We prepared a few VMs for you. To balance the load between VMs, please use the V
 * Group A : 192.168.153.167
 * Group B : 192.168.153.17
 * Group C : 192.168.152.109
-* If the VM from your group is broken, use 192.168.153.100 or 192.168.153.180.
+* If the VM from your group is broken, use 192.168.153.24 or 192.168.153.180.
 
 In the explanations below, please replace IP_VM with the IP of your VM.
 
