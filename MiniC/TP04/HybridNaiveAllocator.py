@@ -17,7 +17,14 @@ class HybridNaiveAllocator(Allocator):
         subst: Dict[Operand, Operand] = {}
         # TODO: Compute before, after, subst. This is similar to what
         # TODO: replace from the Naive and AllInMem Allocators do.
-        raise NotImplementedError("Hybrid, naive, replace.") # TODO
+        for arg in old_instr.args():
+            if isinstance(arg, Temporary):
+                if isinstance(arg.get_alloced_loc(), Offset) :
+                    before.append(RiscV.ld(S[1], arg.get_alloced_loc()))
+                    after.append(RiscV.sd(S[1], arg.get_alloced_loc()))
+                    subst[arg] = S[1]
+                else:
+                    subst[arg] = arg.get_alloced_loc()
         # And now return the new list!
         instr = old_instr.substitute(subst)
         return before + [instr] + after
