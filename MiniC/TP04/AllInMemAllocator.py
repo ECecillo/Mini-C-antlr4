@@ -15,8 +15,12 @@ class AllInMemAllocator(Allocator):
         after: List[Instruction] = []
         subst: Dict[Operand, Operand] = {}
         # TODO (Exercise 7): compute before,after,args.
-        # TODO (Exercise 7): iterate over old_args, check which argument
-        # TODO (Exercise 7): is a temporary (e.g. isinstance(..., Temporary)),
+        for arg in old_instr.args():
+            if isinstance(arg, Temporary):
+                before.append(RiscV.ld(S[numreg], arg.get_alloced_loc()))
+                after.append(RiscV.sd(S[numreg], arg.get_alloced_loc()))
+                subst[arg] = S[numreg]
+                numreg += 1
         # TODO (Exercise 7): and if so, generate ld/sd accordingly. Replace the
         # TODO (Exercise 7): temporary with S[1], S[2] or S[3] physical registers.
         new_instr = old_instr.substitute(subst)
