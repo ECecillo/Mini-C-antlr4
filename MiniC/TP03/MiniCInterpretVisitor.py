@@ -2,7 +2,7 @@
 from typing import Dict, List, cast
 from MiniCVisitor import MiniCVisitor
 from MiniCParser import MiniCParser
-from Lib.Errors import MiniCRuntimeError, MiniCInternalError
+from Lib.Errors import MiniCRuntimeError, MiniCInternalError, MiniCTypeError
 
 MINIC_VALUE = int | str | bool | float | List['MINIC_VALUE']
 
@@ -197,7 +197,58 @@ class MiniCInterpretVisitor(MiniCVisitor):
             result_while_eval_expr = self.visit(ctx.expr())
         # We continue the execution of the program by doing nothing here.
 
-    # TOPLEVEL
+    def visitForStat(self, ctx) -> None:
+        # if assignement passed and then update it in memory.
+        if (ctx.index_assign is not None):
+            self.visit(ctx.index_assign)
+        result_for_eval_expr = None
+        if (self.visit(ctx.for_expr) is not None):
+            result_for_eval_expr = self.visit(ctx.for_expr)
+        # While this expression is true, we execute the body of the for.
+        while result_for_eval_expr:
+            # We execute the body of the for loop.
+            self.visit(ctx.body)
+            # We then visit the incrementation of the for loop.
+            self.visit(ctx.index_mutation())
+            if (self.visit(ctx.for_expr) is not None):
+                result_for_eval_expr = self.visit(ctx.for_expr)
+        # We continue the execution of the program by doing nothing here.
+
+    def visitIndexPlusPlus(self, ctx) -> None:
+        index_name = ctx.ID().getText()
+        index_to_update = self._memory[index_name]
+        if isinstance(index_to_update, int):
+            self._memory[index_name] = index_to_update + int(1)
+        else:
+            raise MiniCTypeError("Index is not an integer")
+
+    def visitIndexMinusMinus(self, ctx) -> None:
+        index_name = ctx.ID().getText()
+        index_to_update = self._memory[index_name]
+        if isinstance(index_to_update, int):
+            self._memory[index_name] = index_to_update - int(1)
+        else:
+            raise MiniCTypeError("Index is not an integer")
+
+    def visitIndexOperatorAssignment(self, ctx) -> None:
+        assert ctx.myop is not None
+        index_name = ctx.ID().getText()
+        op = ctx.myop.type
+        value = self.visit(ctx.expr())
+        index_to_update = self._memory[index_name]
+        if value is not int:
+            raise MiniCTypeError("Index is not an integer")
+        if (op == MiniCParser.PLUS):
+            if isinstance(index_to_update, int):
+                self._memory[index_name] = index_to_update + int(value)
+            else:
+                raise MiniCTypeError("Index is not an integer")
+        if (op == MiniCParser.MINUS):
+            if isinstance(index_to_update, int):
+                self._memory[index_name] = index_to_update + int(value)
+            else:
+                raise MiniCTypeError("Index is not an integer")
+
     def visitProgRule(self, ctx) -> None:
         self.visitChildren(ctx)
         if not self.has_main:
@@ -218,4 +269,5 @@ class MiniCInterpretVisitor(MiniCVisitor):
                 "Functions are not supported in evaluation mode")
 
     def visitFuncCall(self, ctx) -> None:  # pragma: no cover
-        raise MiniCRuntimeError("Functions are not supported in evaluation mode")
+        raise MiniCRuntimeError(
+            "Functions are not supported in evaluation mode")

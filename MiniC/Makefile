@@ -37,8 +37,6 @@ doc: antlr
 	sphinx-apidoc -e -f -o doc/api . TP* replace_* *Wrapper* MiniC* conf* test*
 	make -C doc html
 
-
-
 test: test-interpret test-lab4
 
 test-pyright: antlr
@@ -57,7 +55,7 @@ test-interpret: test-pyright test_interpreter.py main-deps
 ifndef MODE
 # The export must be on the same line as the command (note the ';'), because
 # make starts a new shell for each line.
-LINEAR=export MINICC_OPTS="${MINICC_OPTS} --mode codegen-linear"; 
+LINEAR=export MINICC_OPTS="${MINICC_OPTS} --mode codegen-linear";
 else
 LINEAR=
 endif
