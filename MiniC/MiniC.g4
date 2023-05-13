@@ -15,7 +15,12 @@ id_l: ID # idListBase | ID COM id_l # idList;
 
 block: stat* # statList;
 
-stat: assignment SCOL | if_stat | while_stat | print_stat;
+stat:
+	assignment SCOL
+	| if_stat
+	| for_stat
+	| while_stat
+	| print_stat;
 
 assignment: ID ASSIGN expr # assignStat;
 
@@ -29,7 +34,7 @@ stat_block: OBRACE block CBRACE | stat;
 while_stat: WHILE OPAR expr CPAR body = stat_block # whileStat;
 
 for_stat:
-	FOR OPAR index_assign = assignment? COM for_expr = expr? COM index_mutation? CPAR body =
+	FOR OPAR index_assign = assignment? SCOL for_expr = expr? SCOL index_mutation? CPAR body =
 		stat_block # forStat;
 
 index_mutation:
