@@ -11,4 +11,5 @@ int main()
 }
 
 // EXPECTED
-// for condition must be a boolean expression
+// EXITCODE 2
+// In function main: Line 6 col 2: invalid type for for condition: string
