@@ -201,12 +201,10 @@ class MiniCInterpretVisitor(MiniCVisitor):
         # if assignement passed and then update it in memory.
         if (ctx.index_assign is not None):
             self.visit(ctx.index_assign)
-        result_for_eval_expr = None
+        # default is true if no expr is put, in this case we need to add a div by 0 to stop program with counter to set limit.
+        result_for_eval_expr = True
         if (ctx.expr() is not None):
             result_for_eval_expr = self.visit(ctx.expr())
-        else:
-            # we do an infinite loop but we need to add in our program a counter to stop it.
-            result_for_eval_expr = True
         # While this expression is true, we execute the body of the for.
         while result_for_eval_expr:
             # We execute the body of the for loop.

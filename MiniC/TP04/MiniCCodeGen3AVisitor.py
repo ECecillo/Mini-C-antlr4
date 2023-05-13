@@ -358,6 +358,90 @@ class MiniCCodeGen3AVisitor(MiniCVisitor):
         )
         self._current_function.add_label(end_while)
 
+    def visitForStat(self, ctx) -> None:
+        if self._debug:
+            print("for statement, condition is:")
+            print(Trees.toStringTree(ctx.expr(), None, self._parser))
+            print("and block is:")
+            print(Trees.toStringTree(ctx.stat_block(), None, self._parser))
+
+        start_for = self._current_function.fdata.fresh_label("start_for")
+        end_for = self._current_function.fdata.fresh_label("end_for")
+        immFalseTemp = self._current_function.fdata.fresh_tmp()
+        self._current_function.add_instruction(
+            RiscV.li(immFalseTemp, Operands.Immediate(0)))
+        immTrueTemp = self._current_function.fdata.fresh_tmp()
+        self._current_function.add_instruction(
+            RiscV.li(immTrueTemp, Operands.Immediate(1)))
+        # assign index if present.
+        if ctx.index_assign is not None:
+            self.visit(ctx.index_assign)
+        cond = immTrueTemp
+        # Start loop.
+        self._current_function.add_label(start_for)
+        # evaluate condition if not None else infinite.
+        if ctx.expr() is not None:
+            cond = self.visit(ctx.expr())
+        # if expr is false then go to end.
+        self._current_function.add_instruction(
+            RiscV.conditional_jump(
+                end_for, cond, Condition('beq'), immFalseTemp)
+        )
+        # Execute for block.
+        self.visit(ctx.body)
+        # Increment index.
+        if ctx.index_mutation() is not None:
+            self.visit(ctx.index_mutation())
+        # Jump to start of for.
+        self._current_function.add_instruction(
+            RiscV.jump(start_for)
+        )
+        self._current_function.add_label(end_for)
+
+    def visitIndexPlusPlus(self, ctx) -> None:
+        if self._debug:
+            print("index++ statement")
+        # Get the index that we need to increment.
+        name = ctx.ID().getText()
+        # Increment the index by one using add imediate.
+        self._current_function.add_instruction(
+            RiscV.add(
+                self._symbol_table[name], self._symbol_table[name], Operands.Immediate(1))
+        )
+
+    def visitIndexMinusMinus(self, ctx) -> None:
+        if self._debug:
+            print("index-- statement")
+        name = ctx.ID().getText()
+        index_to_update = self._symbol_table[name]
+        # Need to store the value one in a temp to be able to substract it.
+        value_one = self._current_function.fdata.fresh_tmp()
+        self._current_function.add_instruction(
+            RiscV.li(value_one, Operands.Immediate(1)))
+        # Substract and store the result in a temp.
+        dest_temp = self._current_function.fdata.fresh_tmp()
+        self._current_function.add_instruction(
+            RiscV.sub(dest_temp, Operands.ZERO, value_one))
+        # Decrement the index by using dest_temp (-1).
+        self._current_function.add_instruction(
+            RiscV.add(index_to_update, index_to_update, dest_temp))
+
+    def visitIndexOperatorAssignment(self, ctx) -> None:
+        assert ctx.myop is not None
+        index_name = ctx.ID().getText()
+        val = self.visit(ctx.expr())
+        index_to_update = self._symbol_table[index_name]
+        # Je regarde le symbole myop pour savoir quelle opération je fais.
+        if ctx.myop.type == MiniCParser.PLUS:
+            self._current_function.add_instruction(
+                RiscV.add(index_to_update, index_to_update, val))  # index_to_update += val
+        elif ctx.myop.type == MiniCParser.MINUS:
+            self._current_function.add_instruction(
+                RiscV.sub(index_to_update, index_to_update, val))  # index_to_update -= val
+        else:
+            raise MiniCInternalError(
+                "Unknown additive operator " + ctx.myop.getText())
+
     def visitPrintlnintStat(self, ctx) -> None:
         expr_loc = self.visit(ctx.expr())
         if self._debug:
