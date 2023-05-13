@@ -204,12 +204,16 @@ class MiniCInterpretVisitor(MiniCVisitor):
         result_for_eval_expr = None
         if (self.visit(ctx.for_expr) is not None):
             result_for_eval_expr = self.visit(ctx.for_expr)
+        else:
+            # we do an infinite loop but we need to add in our program a counter to stop it.
+            result_for_eval_expr = True
         # While this expression is true, we execute the body of the for.
         while result_for_eval_expr:
             # We execute the body of the for loop.
             self.visit(ctx.body)
-            # We then visit the incrementation of the for loop.
+            # Increment the index to be re-evaluate by following for_expr.
             self.visit(ctx.index_mutation())
+            # re-evaulation of the for expression at the end.
             if (self.visit(ctx.for_expr) is not None):
                 result_for_eval_expr = self.visit(ctx.for_expr)
         # We continue the execution of the program by doing nothing here.
