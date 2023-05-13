@@ -9,7 +9,7 @@ int main()
     {
       println_int(1/0);
     }
-    compteur++;
+    compteur = compteur + 1;
   }
   return 0;
 }
