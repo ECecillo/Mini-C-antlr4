@@ -2,8 +2,8 @@
 
 int main()
 {
-  int i, compteur;
-  for (i = 0; i < 5; )
+  int compteur;
+  for (; i < 5; i++)
   {
     if (compteur == 1000)
     {
@@ -13,7 +13,6 @@ int main()
   }
   return 0;
 }
-// EXECCODE 1
-// SKIP TEST EXPECTED
 // EXPECTED
-// Division by 0
+// EXITCODE 2
+// In function main: Line 6 col 9: Undefined variable i
